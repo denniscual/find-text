@@ -1,5 +1,5 @@
 ## find-text
-A simple starter kit for creating module in node.
+Fast, minimal, and easy to use tool for finding text across multiple files
 
 ## License
 
