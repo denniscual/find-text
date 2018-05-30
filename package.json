@@ -40,10 +40,8 @@
   "keywords": [
     "node",
     "utility",
-    "starter-kit",
-    "rollup",
-    "standard",
-    "eslint"
+    "todo",
+    "cli"
   ],
   "files": [
     "dist"
