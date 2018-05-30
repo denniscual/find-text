@@ -26,7 +26,7 @@ yarn install
 #### Scripts
 
 * `yarn build` -  builds the library to `dist`.
-* `yarn start` - builds the library, then keeps rebuilding it whenever the source files change 
+* `yarn dev` - builds the library, then keeps rebuilding it whenever the source files change 
 using [rollup-watch](https://github.com/rollup/rollup-watch).
 * `yarn test` - runs tests.
 
