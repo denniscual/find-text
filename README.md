@@ -11,7 +11,6 @@ Check the pre-installed dev dependencies which you can take advantage easily.
 - [Jest](https://facebook.github.io/jest/) for testing
 - [Eslint](https://eslint.org/) for linting. It uses [standard config](https://github.com/standard/eslint-config-standard)
 for Javascript standard style
-- Sourcemap creation
 
 ## Getting started
 
@@ -29,7 +28,7 @@ yarn install
 * `yarn build` -  builds the library to `dist`.
 * `yarn start` - builds the library, then keeps rebuilding it whenever the source files change 
 using [rollup-watch](https://github.com/rollup/rollup-watch).
-* `yarn test` - builds the library, then run tests.
+* `yarn test` - runs tests.
 
 ## License
 
