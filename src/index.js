@@ -1,6 +1,6 @@
 import { join } from 'path'
 import { createReadStream } from 'fs'
-import { getRelativePath, removeNil } from './helpers'
+import { getFoundText, removeNil } from './helpers'
 const fastGlob = require('fast-glob')
 
 /**
@@ -18,42 +18,13 @@ const fastGlob = require('fast-glob')
 export const findText = (word, path, options) => {
   // Handle if the path is a file
   const readerStream = createReadStream(path)
-
   // Set the encoding to be utf8.
   readerStream.setEncoding('UTF8')
-
   // Return a promise
   return new Promise((resolve, reject) => {
     // listening to an event data
     readerStream.on('data', (content) => {
-      // split the content of the file by newline. Return array of lines(line of strings read in given file)
-      const lines = content.split('\n')
-
-      // Transform the elements of lines into object. The object should have properties of
-      // text and lineNumber. Use 'map' method for tranforming the lines array. Use the index parameter (add 1 because index is zero-based number) which is passed in 'map' for getting the line number of each line.
-      const transformLines = lines.map((line, i) => ({
-        text: line,
-        lineNumber: i + 1
-      }))
-
-      // Filter only the the line which include the found string
-      const filteredLines = transformLines
-        .filter((line) => line.text.includes(word))
-
-      // Create an object which has attributes of matches and count. Use 'reduce' method
-      const result = filteredLines.reduce((acc, line) => {
-        const { matches } = acc
-        // Handle if the matches is defined or undefined. If defined, retain the matches data. Else
-        // assign a new array with the line element
-        const updatedMatches = matches ? matches.concat(line) : [line]
-        // return new acc
-        return {
-          fileName: getRelativePath(path),
-          matches: updatedMatches,
-          count: updatedMatches.length
-        }
-      }, {})
-
+      const result = getFoundText(content, {word, path})
       // pass the result as resolve value
       resolve(result)
     })
@@ -88,10 +59,7 @@ export const findTextInFiles = (word, pattern, options) => {
         // execute the findText which returns Promise either resolve or rejected.
         return findText(word, join(cwd, file))
       })
-
-      /**
-         Returns a single Promise that resolves when all of the promises in the iterable argument have resolved or when the iterable argument contains no promises. It rejects with the reason of the first promise that rejects.
-      */
+      // invoke all Promises
       return Promise
         .all(promises)
         .then(removeNil) // removing null and empty object element

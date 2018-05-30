@@ -22,7 +22,8 @@ export default {
     filesize(), // display the filesize.
     terser(), // uglifier for es modules
     babel({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules/**',
+      plugins: ['external-helpers']
     }),
     resolve(),
     commonjs({

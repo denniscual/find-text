@@ -1,11 +1,9 @@
 {
   "presets": [
     ["env", {
-      "modules": false
+      "modules": "commonjs"
     }],
+    "jest",
     "stage-0"
-  ],
-  "plugins": [
-    "external-helpers"
   ]
 }
