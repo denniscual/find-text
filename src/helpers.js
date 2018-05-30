@@ -15,7 +15,7 @@ export const getRelativePath = (path) => path.replace(`${process.cwd()}/`, '')
  * Extract the line with found text in the given file.
  * @param {String} word
  * @param {Object} meta information
- * @return {Object} result
+ * @return {Object} result (fileName, matches, count)
  */
 export const getFoundText = (content, {word, path}) => {
   // split the content of the file by newline. Return array of lines(line of strings read in given file)
@@ -42,7 +42,7 @@ export const getFoundText = (content, {word, path}) => {
     return {
       fileName: getRelativePath(path),
       matches: updatedMatches,
-      count: updatedMatches.length
+      count: updatedMatches.length // count matches
     }
   }, {})
 
