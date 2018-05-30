@@ -1,0 +1,9 @@
+{
+  "name": "find-text",
+  "version": "0.1.0",
+  "description": "Fast and easy to use tool for finding a text across multiple files",
+  "main": "index.js",
+  "repository": "https://github.com/denniscual/find-text",
+  "author": "denniscual <mamaylovepapay@outlook.com>",
+  "license": "MIT"
+}
