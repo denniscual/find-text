@@ -91,13 +91,13 @@ Promise is rejected when passing path which is not exist.
 
 #### text
 
-Type: `string`<br>
+Type: `string`
 
 The string you want to search for.
 
 #### path
 
-Type: `string`<br>
+Type: `string`
 
 The path you want to search in.
 
@@ -109,13 +109,13 @@ It returns empty array when passing not found text or no files are matched for t
 
 #### text
 
-Type: `string`<br>
+Type: `string`
 
 The string you want to search for.
 
 #### pattern
 
-Type: `string`|`string[]`<br>
+Type: `string`|`string[]`
 
 Pattern to be matched. It supports negated pattern. For more information about pattern, check [micromatch](https://github.com/micromatch/micromatch)
 
