@@ -1,7 +1,7 @@
 {
   "name": "find-text",
   "version": "1.0.0",
-  "description": "Fast and easy to use tool for finding text across multiple files",
+  "description": "Fast, minimal, and easy to use tool for finding text across multiple files",
   "main": "dist/index.js",
   "author": "denniscual <mamaylovepapay@outlook.com>",
   "license": "MIT",
