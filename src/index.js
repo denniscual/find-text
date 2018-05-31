@@ -31,7 +31,7 @@ export const findText = (word, path, options) => {
     // listening to an event error
     readerStream.on('error', (error) => {
       // pass the error message as reject value
-      reject(error.message)
+      reject(error)
     })
   })
 }
