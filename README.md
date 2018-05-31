@@ -13,7 +13,7 @@ npm install find-text
 
 The module exposes two API's `findText` and `findTextInFiles`.
 
-#### findText
+### findText
 
 ```js
 import { findText } from './index'
@@ -26,6 +26,10 @@ import { findText } from './index'
 findText('TODO', '/Users/user/Desktop/sample/src/users.js')
   .then((results) => {
     console.log(results) // See below the shape of result output
+  })
+  .catch((err) => {
+    // Error object
+    console.log(err)
   })
 ```
 
@@ -42,7 +46,7 @@ const result = {
 }
 ```
 
-#### findTextInFiles
+### findTextInFiles
 
 ```js
 import { findTextInFiles } from './index'
@@ -55,6 +59,10 @@ import { findTextInFiles } from './index'
 findTextInFiles('TODO', 'src/users.js')
   .then((results) => {
     console.log(results) // See below the shape of results output
+  })
+  .catch((err) => {
+    // Error object
+    console.log(err)
   })
 ```
 
@@ -73,6 +81,43 @@ const results = [
 ]
 ```
 
+## API
+
+### findText :: (String, String) => Promise 
+
+Find the text on the given file. When the text is not found in the given file, it returns empty object.
+
+Promise is rejected when passing path which is not exist.
+
+#### text
+
+Type: `string`<br>
+
+The string you want to search for.
+
+#### path
+
+Type: `string`<br>
+
+The path you want to search in.
+
+### findTextInFiles :: (String, String) => Promise
+
+Find the text in the files which are resided at the given directory. It recursively reads the nested files (uses fast-glob) for matching files.
+
+It returns empty array when passing not found text or no files are matched for the given pattern.
+
+#### text
+
+Type: `string`<br>
+
+The string you want to search for.
+
+#### pattern
+
+Type: `string`|string[]<br>
+
+Pattern to be matched. It supports negated pattern. For more information about pattern, check [micromatch](https://github.com/micromatch/micromatch)
 
 ## License
 
