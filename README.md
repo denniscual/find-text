@@ -103,7 +103,7 @@ The path you want to search in.
 
 ### findTextInFiles :: (String, String) => Promise
 
-Find the text in the files which are resided at the given directory. It recursively reads the nested files (uses fast-glob) for matching files.
+Find the text in the files which are resided at the given directory. It recursively reads the nested files which match for the pattern.
 
 It returns empty array when passing not found text or no files are matched for the given pattern.
 
@@ -115,7 +115,7 @@ The string you want to search for.
 
 #### pattern
 
-Type: `string`|string[]<br>
+Type: `string`|`string[]`<br>
 
 Pattern to be matched. It supports negated pattern. For more information about pattern, check [micromatch](https://github.com/micromatch/micromatch)
 
