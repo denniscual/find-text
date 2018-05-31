@@ -7,7 +7,7 @@ const fastGlob = require('fast-glob')
  * findText :: (String, String) => Promise
  *
  * Find the text on the given file. It is case-sensitive search utility.
- * @param {String} word
+ * @param {String} text
  * @param {String} path
  * @param {Object} options? where you can control the search mechanism. We can set flags (Regex) and make not case sensitive on the options.
  * @return {Promise}
@@ -15,7 +15,7 @@ const fastGlob = require('fast-glob')
  *     given word cannot find in the file, it returns empty object.
  *   - Promise reject type is an instance of Error.
  */
-export const findText = (word, path, options) => {
+export const findText = (text, path, options) => {
   // Handle if the path is a file
   const readerStream = createReadStream(path)
   // Set the encoding to be utf8.
@@ -24,7 +24,7 @@ export const findText = (word, path, options) => {
   return new Promise((resolve, reject) => {
     // listening to an event data
     readerStream.on('data', (content) => {
-      const result = getFoundText(content, {word, path})
+      const result = getFoundText(content, {word: text, path})
       // pass the result as resolve value
       resolve(result)
     })
@@ -40,7 +40,7 @@ export const findText = (word, path, options) => {
  * findTextInFiles :: (String, String) => Promise
  *
  * Find the text in the files which are resided at the given directory. It recursively reads the nested files (uses fast-glob) for matching files.
- * @param {String} word
+ * @param {String} text
  * @param {String} pattern a string value which is used for filtering files.
  * @param {Object} options where you can control the search mechanism. It attributes to make the search as not case-sensitive.
  *                         We can also use this options to skip some files.
@@ -49,7 +49,7 @@ export const findText = (word, path, options) => {
  *     given word cannot find in the file, it returns empty array.
  *   - Promise reject type is an instance of Error.
  */
-export const findTextInFiles = (word, pattern, options) => {
+export const findTextInFiles = (text, pattern, options) => {
   return fastGlob(pattern)
     .then((files) => {
       // get the current working directory
@@ -57,7 +57,7 @@ export const findTextInFiles = (word, pattern, options) => {
       // return of array of promises.
       const promises = files.map((file) => {
         // execute the findText which returns Promise either resolve or rejected.
-        return findText(word, join(cwd, file))
+        return findText(text, join(cwd, file))
       })
       // invoke all Promises
       return Promise
