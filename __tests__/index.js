@@ -136,7 +136,7 @@ describe('findTextInFiles', () => {
       })
   })
 
-  it('should skip file which is not matched in the given pattern', () => {
+  it('should skip file which is not matched for the given pattern', () => {
     // passing pattern for only .txt file
     const { word, pattern } = fakeDataForFindTextInFiles({pattern: '__tests__/**/*.txt'})
     expect.assertions(1)
