@@ -16,7 +16,7 @@ The module exposes two API's `findText` and `findTextInFiles`.
 ### findText
 
 ```js
-import { findText } from './index'
+import { findText } from 'find-text'
 
 /**
  * findText :: (String, String) => Promise
@@ -49,7 +49,7 @@ const result = {
 ### findTextInFiles
 
 ```js
-import { findTextInFiles } from './index'
+import { findTextInFiles } from 'find-text'
 
 /**
  * findTextInFiles :: (String, String) => Promise
